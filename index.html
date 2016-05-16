@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+    <div id="taiji"></div>
+
+    <script src="bower_components/d3/d3.js" charset="utf-8"></script>
+    <script src="js/src/taiji.js" charset="utf-8"></script>
+    <script>
+
+
+        var margin = {top: 20, left: 30, right: 20, bottom: 120},
+            height = 600 - margin.top - margin.bottom,
+            width = 1200 - margin.right - margin.left,
+            svg = d3.select("#taiji").append("svg").attr("height", (height + margin.top + margin.bottom))
+                    .attr("width", (width + margin.right + margin.left) );
+            svg.append("g").attr("id", "taiji_container");
+
+        d3.smartObject.taiji({container: "#taiji_container", r : 200, x : 200,  y:200});
+
+
+    </script>
+</body>
+</html>
