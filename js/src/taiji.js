@@ -16,7 +16,9 @@ d3.smartObject.taiji = (function () {
          * margin       :Object                         margin obj contains top left right bottom
          */
 
-        var stage = d3.select(config.container).style("transform-origin", config.r + "px " + config.r + "px");
+        var stage = d3.select(config.container).style("transform-origin", config.r + "px " + config.r + "px")
+            .style("transform", "rotate(0deg)");
+
 
         var gradient = stage.append("defs").append("linearGradient")
             .attr({
@@ -85,12 +87,12 @@ d3.smartObject.taiji = (function () {
         function rotTween() {
             var i = d3.interpolate(0, 720);
             return function(t) {
-                return "rotate(" + i(t) + ")";
+                return "rotate(" + i(t) + "deg)";
             };
         }
 
         stage.on("click", function () {
-            stage.transition().duration(1500).attrTween("transform", rotTween);
+            stage.transition().duration(1500).styleTween("transform", rotTween);
         })
     };
     
