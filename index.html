@@ -6,20 +6,27 @@
 </head>
 <body>
     <div id="taiji"></div>
+    <div id="blockArrow"></div>
 
     <script src="bower_components/d3/d3.js" charset="utf-8"></script>
     <script src="js/src/taiji.js" charset="utf-8"></script>
+    <script src="js/src/basicShapes.js" charset="utf-8"></script>
     <script>
 
 
         var margin = {top: 20, left: 30, right: 20, bottom: 120},
-            height = 600 - margin.top - margin.bottom,
-            width = 1200 - margin.right - margin.left,
+            height = 300 - margin.top - margin.bottom,
+            width = 300 - margin.right - margin.left,
             svg = d3.select("#taiji").append("svg").attr("height", (height + margin.top + margin.bottom))
                     .attr("width", (width + margin.right + margin.left) );
             svg.append("g").attr("id", "taiji_container");
 
-        d3.smartObject.taiji({container: "#taiji_container", r : 200, x : 200,  y:200});
+        d3.smartObject.taiji({container: "#taiji_container", r : 100, x : 100,  y:100});
+
+        //blockArrow
+        var arrFun = d3.smartObject.blockArrow({height: 30, width:50, angle: 90});
+
+        Array.from({length:3}).forEach((e, i) => arrFun("#taiji_container").attr("transform", "translate("+ [i * 52, 0] +")"));
 
 
     </script>
