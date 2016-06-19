@@ -19,14 +19,27 @@
             width = 300 - margin.right - margin.left,
             svg = d3.select("#taiji").append("svg").attr("height", (height + margin.top + margin.bottom))
                     .attr("width", (width + margin.right + margin.left) );
+        var myP = d3.smartObject.fillPattern({container: "#taiji svg", id: "myP"});
             svg.append("g").attr("id", "taiji_container");
 
-        d3.smartObject.taiji({container: "#taiji_container", r : 100, x : 100,  y:100});
+        //d3.smartObject.taiji({container: "#taiji_container", r : 100, x : 100,  y:100});
 
         //blockArrow
-        var arrFun = d3.smartObject.blockArrow({height: 30, width:50, angle: 90});
+        //var arrFun = d3.smartObject.arrow({height: 60, width:250, angle: 60});
+        //var arrFun = d3.smartObject.hexagon({len:50});
 
-        Array.from({length:3}).forEach((e, i) => arrFun("#taiji_container").attr("transform", "translate("+ [i * 52, 0] +")"));
+
+    //    Array.from({length:3}).forEach((e, i) => arrFun("#taiji_container").attr("transform", "translate("+ [i * 52, 100] +")").attr("fill",myP)
+    //            .style("stroke", "#000").attr("stroke-dasharray", "5, 5")
+    //    );
+
+
+
+        var x = 40;
+        var arrFun = d3.smartObject.hexagon({len:x});
+        [[x, Math.sqrt(3)*x], [x, 0], [2.5*x, Math.sqrt(3)/2*x]].forEach((e, i) => arrFun("#taiji svg").attr("transform", "translate("+ e +")").attr("fill",myP)
+                        .style("stroke", "#000").attr("stroke-dasharray", "5, 5")
+        );
 
 
     </script>
